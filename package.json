@@ -11,7 +11,7 @@
     "nodemon": "^2.0.9"
   },
   "scripts": {
-    "start": "node server",
+    "start": "cd client yarn start",
     "server": "nodemon server",
     "install-client": "cd client && yarn install",
     "build": "cd client && yarn build ",
