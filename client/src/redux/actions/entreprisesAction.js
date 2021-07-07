@@ -1,6 +1,4 @@
 import Api from "components/Api";
-import axios from "axios";
-import Cookies from "js-cookie";
 
 export const GET_ENTREPRISES = "GET_ENTREPRISES";
 export const GET_CURRENT_ENTREPRISE = "GET_CURRENT_ENTREPRISE ";
