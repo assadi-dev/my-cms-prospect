@@ -12,6 +12,7 @@
   },
   "scripts": {
     "start": "node server",
+    "client": "cd client && yarn start",
     "server": "nodemon server",
     "install-client": "cd client && yarn install",
     "build": "cd client && yarn build ",
