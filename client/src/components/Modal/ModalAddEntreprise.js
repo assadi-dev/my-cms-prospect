@@ -124,7 +124,7 @@ const ModalAddEntreprise = ({
                 <Input
                   name="adresse"
                   id="adresse"
-                  placeholder="Nom de l'entreprise"
+                  placeholder="Address l'entreprise"
                   onChange={handleChangValue}
                 />
               </FormGroup>
