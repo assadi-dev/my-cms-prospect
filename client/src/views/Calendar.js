@@ -99,7 +99,7 @@ const Calendar = ({ listRdv, eventsData, set_modal_addRdv, modalState }) => {
                     <FullCalendar
                       selectable={true}
                       height="500px"
-                      weekends={true}
+                      weekends={false}
                       nowIndicator={true}
                       plugins={[dayGridPlugin, interactionPlugin, listWeek]}
                       themeSystem="bootstrap"
