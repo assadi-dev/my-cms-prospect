@@ -16,15 +16,9 @@ const DemarcheTable = ({
   update_entreprise,
   token,
 }) => {
-  const [item, setItem] = useState([
-    { id: 1, name: "entreprise 1", column: "" },
-    { id: 2, name: "entreprise 2", column: "entreprise" },
-    { id: 3, name: "entreprise 3", column: "entreprise" },
-  ]);
-
   useEffect(() => {
     listChecked.map((list) => {
-      let data = { statut: "entreprise" };
+      let data = { statut: "prospected" };
     });
   }, [loadlistEntreprise]);
 
@@ -45,8 +39,14 @@ const DemarcheTable = ({
           ...e,
           statut:
             e.id === currentItem.id
-              ? await update_entreprise(token, id, { statut: columnName })
-              : await update_entreprise(token, id, { statut: e.columnName }),
+              ? await update_entreprise(token, id, {
+                  statut: columnName,
+                  updateAt: new Date(),
+                })
+              : await update_entreprise(token, id, {
+                  statut: e.columnName,
+                  updateAt: new Date(),
+                }),
         };
       });
     };
@@ -57,22 +57,20 @@ const DemarcheTable = ({
 
       end: (item, monitor) => {
         const dropResult = monitor.getDropResult();
-        const bg = "lightBlue";
 
-        console.log(dropResult);
         if (dropResult) {
           const { name } = dropResult;
           switch (name) {
-            case "entreprise":
-              changeItemColumn(item, "entreprise");
+            case "prospected":
+              changeItemColumn(item, "prospected");
 
               break;
             case "relance":
               changeItemColumn(item, "relance");
 
               break;
-            case "entretient":
-              changeItemColumn(item, "entretient");
+            case "entretien":
+              changeItemColumn(item, "entretien");
 
               break;
 
@@ -109,13 +107,13 @@ const DemarcheTable = ({
             <Col sm={4} md={4}>
               <Column
                 className="boardContainer border-top border-info "
-                title="entreprise"
+                title="prospected"
               >
                 {" "}
                 <CardHeader>
                   <h3>Entreprises Postulé</h3>
                 </CardHeader>
-                <ul className="mt-3">{returnColumn("entreprise")}</ul>
+                <ul className="mt-3">{returnColumn("prospected")}</ul>
               </Column>
             </Col>
             <Col sm={4} md={4}>
@@ -132,12 +130,12 @@ const DemarcheTable = ({
             <Col sm={4} md={4}>
               <Column
                 className="boardContainer border-top border-success"
-                title="entretient"
+                title="entretien"
               >
                 <CardHeader>
                   <h3>Entretient</h3>
                 </CardHeader>
-                <ul className="mt-3">{returnColumn("entretient")}</ul>
+                <ul className="mt-3">{returnColumn("entretien")}</ul>
               </Column>
             </Col>
           </DndProvider>

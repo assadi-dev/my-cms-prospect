@@ -219,9 +219,16 @@ function Dashboard({
                           <td>{item.nom}</td>
                           <td>{item.ville}</td>
                           <td className="text-center">
-                            {item.checked ? (
+                            {item.statut === "entretien" && (
+                              <span className="text-success">Entretien</span>
+                            )}
+                            {item.statut === "prospected" && (
                               <span className="text-success">Prospecté</span>
-                            ) : (
+                            )}
+                            {item.statut === "relance" && (
+                              <span className="text-warning">Relancé</span>
+                            )}
+                            {item.checked === false && (
                               <span className="text-danger">Non prospecté</span>
                             )}
                           </td>

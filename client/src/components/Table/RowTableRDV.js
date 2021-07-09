@@ -76,7 +76,7 @@ const RowTableRDV = ({
         <td className="text-center">{ville}</td>
         <td className="text-center">
           {checked ? (
-            <span className="text-success">Prospecté</span>
+            <span className="text-success">Terminé</span>
           ) : (
             <span className="text-warning">En attente</span>
           )}

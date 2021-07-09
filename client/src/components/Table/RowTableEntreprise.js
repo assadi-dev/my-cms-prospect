@@ -16,7 +16,7 @@ const RowTableEntreprise = ({
   set_modal_editEntreprise,
   get_current_entreprises,
 }) => {
-  const { id, nom, email, telephone, ville, checked } = data;
+  const { id, nom, email, telephone, ville, checked, statut } = data;
 
   const [state, setState] = useState({
     isChecked: false,
@@ -39,7 +39,7 @@ const RowTableEntreprise = ({
       let data = {
         checked: !checked,
         updateAt: new Date(),
-        statut: !checked ? "entreprise" : null,
+        statut: !checked ? "prospected" : null,
       };
 
       await update_entreprise(token, id, data);
@@ -82,10 +82,17 @@ const RowTableEntreprise = ({
         <td>{ville}</td>
         <td>{telephone}</td>
         <td className="text-center">
-          {checked ? (
+          {statut === "entretien" && (
+            <span className="text-success">Entretien</span>
+          )}
+          {statut === "prospected" && (
             <span className="text-success">Prospecté</span>
-          ) : (
-            <span className="text-warning">En attente</span>
+          )}
+          {statut === "relance" && (
+            <span className="text-warning">Relancé</span>
+          )}
+          {checked === false && (
+            <span className="text-danger">Non prospecté</span>
           )}
         </td>
         <td className="text-center">
