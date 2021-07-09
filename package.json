@@ -5,15 +5,19 @@
   "author": "Assadi",
   "license": "MIT",
   "dependencies": {
+    "concurrently": "^6.2.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "nodemon": "^2.0.9"
+    "nodemon": "^2.0.9",
+    "react-beautiful-dnd": "^13.1.0",
+    "react-dnd-touch-backend": "^14.0.0"
   },
   "scripts": {
     "start": "node server",
     "client": "cd client && yarn start",
     "server": "nodemon server",
+    "dev-server": "concurrently --kill-others  \"npm run client\"  \"npm run server\" ",
     "install-client": "cd client && yarn install",
     "build": "cd client && yarn build ",
     "heroku-postbuild": "yarn install-client && yarn run build"

@@ -24,6 +24,7 @@ import TableList from "views/TableList.js";
 import Typography from "views/Typography.js";
 import UserProfile from "views/UserProfile.js";
 import Calendar from "views/Calendar";
+import DemarcheTable from "views/DemarcheTable";
 
 var routes = [
   {
@@ -48,6 +49,14 @@ var routes = [
     rtlName: "قائمة الجدول",
     icon: "tim-icons icon-calendar-60",
     component: Calendar,
+    layout: "/admin",
+  },
+  {
+    path: "/demarche",
+    name: "Mes Démarches",
+    rtlName: "قائمة الجدول",
+    icon: "tim-icons icon-sound-wave",
+    component: DemarcheTable,
     layout: "/admin",
   },
   {

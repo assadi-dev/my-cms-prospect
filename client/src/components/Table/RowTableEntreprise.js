@@ -36,7 +36,11 @@ const RowTableEntreprise = ({
           isChecked: !prevState.isChecked,
         };
       });
-      let data = { checked: !checked, updateAt: new Date() };
+      let data = {
+        checked: !checked,
+        updateAt: new Date(),
+        statut: !checked ? "entreprise" : null,
+      };
 
       await update_entreprise(token, id, data);
     } catch (error) {}
