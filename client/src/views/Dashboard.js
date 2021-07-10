@@ -268,9 +268,9 @@ function Dashboard({
                           <td className="text-center">
                             {" "}
                             {item.checked ? (
-                              <span className="text-success">Prospecté</span>
+                              <span className="text-success">Terminé</span>
                             ) : (
-                              <span className="text-danger">Non prospecté</span>
+                              <span className="text-danger">En attente</span>
                             )}
                           </td>
                           <td>{minDateMonth(item.createdAt)}</td>
