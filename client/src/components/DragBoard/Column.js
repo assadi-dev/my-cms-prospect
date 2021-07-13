@@ -1,24 +1,13 @@
 import React from "react";
-import { Card, CardBody, CardHeader, CardTitle, Row, Col } from "reactstrap";
-import { useDrop } from "react-dnd";
-const Column = ({ children, className, title }) => {
-  const [{ canDrop, isOver }, drop] = useDrop({
-    accept: "BOX",
-    drop: () => ({ name: title }),
-    collect: (monitor) => ({
-      isOver: monitor.isOver(),
-      canDrop: monitor.canDrop(),
-    }),
-  });
+import { Card } from "reactstrap";
 
+const Column = ({ children, className, title, isOver }) => {
   const bacground = isOver ? "rgba(39, 41, 61,0.3)" : "#27293d";
 
   return (
-    <div ref={drop}>
-      <Card style={{ backgroundColor: bacground }} className={className}>
-        {children}
-      </Card>
-    </div>
+    <Card style={{ backgroundColor: "#27293d" }} className={className}>
+      {children}
+    </Card>
   );
 };
 
