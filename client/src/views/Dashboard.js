@@ -94,7 +94,7 @@ function Dashboard({
   return (
     <>
       <div className="content">
-        <Row>
+        {/* <Row>
           <Col xs="12">
             <Card className="card-chart">
               <CardHeader>
@@ -173,7 +173,7 @@ function Dashboard({
               </CardBody>
             </Card>
           </Col>
-        </Row>
+        </Row>*/}
         <Row>
           {!listEntreprises.isLoading && (
             <Col lg="6">
@@ -189,7 +189,7 @@ function Dashboard({
             <Col lg="6">
               <ChartCard
                 titleChart="Rendez-Vous enregistrées"
-                rowLabel={["Prospecté", "Pas encore prospécté"]}
+                rowLabel={["Terminé", "En attente"]}
                 data={listRDV.dataCollection}
                 dataArrayTotal={listRDV.dataCollection.length}
               />
