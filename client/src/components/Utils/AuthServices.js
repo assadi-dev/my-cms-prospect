@@ -11,7 +11,7 @@ export const setCookiesAuth = async (authState) => {
   return await Cookies.set(StorageKey, authState, {
     expires: 7,
     secure: true,
-    sameSite: "Strict",
+    sameSite: "None",
   });
 };
 
