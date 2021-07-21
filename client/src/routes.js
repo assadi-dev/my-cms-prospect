@@ -60,13 +60,13 @@ var routes = [
     layout: "/admin",
   },
 
-  {
+  /* {
     path: "/profile",
     name: "Mon profile",
     rtlName: "ملف تعريفي للمستخدم",
     icon: "tim-icons icon-single-02",
     component: UserProfile,
     layout: "/admin",
-  },
+  },*/
 ];
 export default routes;
