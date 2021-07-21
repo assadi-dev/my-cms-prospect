@@ -8,7 +8,7 @@ export const DELETE_ENTREPRISE = "DELETE_ENTREPRISE";
 
 export const get_entreprises = (token) => {
   const config = {
-    Authorization: `${token}`,
+    Authorization: `Bearer ${token}`,
     Accept: "application/json",
     "Content-Type": "application/json",
   };
