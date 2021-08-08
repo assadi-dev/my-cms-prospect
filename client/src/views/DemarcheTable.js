@@ -7,6 +7,7 @@ import { getDataChecked } from "components/Utils/ArraySevices";
 import { useEffect } from "react";
 import { update_entreprise } from "redux/actions/entreprisesAction";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import "components/Table/table.css";
 
 const DemarcheTable = ({
   loadlistEntreprise,
@@ -86,7 +87,7 @@ const DemarcheTable = ({
   return (
     <>
       <div className="content">
-        <div className="d-flex" style={{ overflowX: "auto" }}>
+        <div className="d-flex statusRowCol">
           <DragDropContext onDragEnd={ondragEnd}>
             <Col sm={3} md={3}>
               <Column
