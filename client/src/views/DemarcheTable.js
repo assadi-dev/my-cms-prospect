@@ -86,9 +86,9 @@ const DemarcheTable = ({
   return (
     <>
       <div className="content">
-        <Row>
+        <div className="d-flex" style={{ overflowX: "auto" }}>
           <DragDropContext onDragEnd={ondragEnd}>
-            <Col sm={4} md={4}>
+            <Col sm={3} md={3}>
               <Column
                 className="boardContainer border-top border-info "
                 title="prospected"
@@ -107,7 +107,7 @@ const DemarcheTable = ({
                 </Droppable>
               </Column>
             </Col>
-            <Col sm={4} md={4}>
+            <Col sm={3} md={3}>
               <Column
                 className="boardContainer border-top border-warning"
                 title="relance"
@@ -125,7 +125,7 @@ const DemarcheTable = ({
                 </Droppable>
               </Column>
             </Col>
-            <Col sm={4} md={4}>
+            <Col sm={3} md={3}>
               <Column
                 className="boardContainer border-top border-success"
                 title="entretien"
@@ -144,8 +144,46 @@ const DemarcheTable = ({
                 </Droppable>
               </Column>
             </Col>
+            <Col sm={3} md={3}>
+              <Column
+                className="boardContainer border-top border-success"
+                title="retenue"
+              >
+                <CardHeader>
+                  <h3>Retenue</h3>
+                </CardHeader>
+
+                <Droppable droppableId={"retenue"}>
+                  {(provider) => (
+                    <div {...provider.droppableProps} ref={provider.innerRef}>
+                      <ul className="mt-3">{returnColumn("retenue")}</ul>
+                      {provider.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+              </Column>
+            </Col>
+            <Col sm={3} md={3}>
+              <Column
+                className="boardContainer border-top border-danger"
+                title="non-retenue"
+              >
+                <CardHeader>
+                  <h3>Non-retenue</h3>
+                </CardHeader>
+
+                <Droppable droppableId={"non-retenue"}>
+                  {(provider) => (
+                    <div {...provider.droppableProps} ref={provider.innerRef}>
+                      <ul className="mt-3">{returnColumn("non-retenue")}</ul>
+                      {provider.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+              </Column>
+            </Col>
           </DragDropContext>
-        </Row>
+        </div>
       </div>
     </>
   );

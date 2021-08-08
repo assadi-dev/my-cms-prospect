@@ -223,10 +223,18 @@ function Dashboard({
                               <span className="text-success">Entretien</span>
                             )}
                             {item.statut === "prospected" && (
-                              <span className="text-success">Prospecté</span>
+                              <span style={{ color: "var(--teal)" }}>
+                                Prospecté
+                              </span>
                             )}
                             {item.statut === "relance" && (
                               <span className="text-warning">Relancé</span>
+                            )}
+                            {item.statut === "non-retenue" && (
+                              <span className="text-danger">Non retenue</span>
+                            )}
+                            {item.statut === "retenue" && (
+                              <span className="text-success">Retenue</span>
                             )}
                             {item.checked === false && (
                               <span className="text-danger">Non prospecté</span>

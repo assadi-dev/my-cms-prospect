@@ -33,6 +33,8 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupText,
+  Label,
+  FormGroup,
 } from "reactstrap";
 import { get_entreprises } from "../redux/actions/entreprisesAction";
 
@@ -50,6 +52,7 @@ function Tables({
     addModalEntreprise: false,
     isloading: true,
     searchTerm: "",
+    statutFilter: "",
   });
 
   useEffect(() => {
@@ -84,6 +87,16 @@ function Tables({
       return {
         ...prevState,
         searchTerm: value,
+      };
+    });
+  };
+
+  const handleSatutFilter = (e) => {
+    let value = e.target.value;
+    setState((prevState) => {
+      return {
+        ...prevState,
+        statutFilter: value,
       };
     });
   };
@@ -137,6 +150,25 @@ function Tables({
                       />
                     </InputGroup>
                   </Col>
+                  <Col md="3" className="my-3">
+                    <FormGroup>
+                      <Label for="statutFilter">Statut</Label>
+                      <Input
+                        type="select"
+                        name="select"
+                        id="statutFilter"
+                        onChange={handleSatutFilter}
+                      >
+                        <option value="">Tout</option>
+                        <option value="no-prospected">Non-prospecté</option>
+                        <option value="prospected">Prospecté</option>
+                        <option value="relance">Relancé</option>
+                        <option value="entretient">Entretient</option>
+                        <option value="retenue">Retenue</option>
+                        <option value="non-retenue">Non-retenue</option>
+                      </Input>
+                    </FormGroup>
+                  </Col>
                 </Row>
 
                 <Table className="tablesorter" responsive>
@@ -155,18 +187,19 @@ function Tables({
                     {listEntreprise.dataCollection
                       .filter((item) => {
                         return (
-                          item.nom
+                          (item.nom
                             .toLowerCase()
                             .includes(state.searchTerm.toLowerCase()) ||
-                          item.email
-                            .toLowerCase()
-                            .includes(state.searchTerm.toLowerCase()) ||
-                          item.ville
-                            .toLowerCase()
-                            .includes(state.searchTerm.toLowerCase()) ||
-                          item.codePostal
-                            .toLowerCase()
-                            .includes(state.searchTerm.toLowerCase())
+                            item.email
+                              .toLowerCase()
+                              .includes(state.searchTerm.toLowerCase()) ||
+                            item.ville
+                              .toLowerCase()
+                              .includes(state.searchTerm.toLowerCase()) ||
+                            item.codePostal
+                              .toLowerCase()
+                              .includes(state.searchTerm.toLowerCase())) &&
+                          item.statut.startsWith(state.statutFilter)
                         );
                       })
                       .map((item) => (

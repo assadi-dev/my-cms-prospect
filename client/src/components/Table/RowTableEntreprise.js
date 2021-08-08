@@ -39,7 +39,7 @@ const RowTableEntreprise = ({
       let data = {
         checked: !checked,
         updateAt: new Date(),
-        statut: !checked ? "prospected" : null,
+        statut: !checked ? "prospected" : "no-prospected",
       };
 
       await update_entreprise(token, id, data);
@@ -86,13 +86,19 @@ const RowTableEntreprise = ({
             <span className="text-success">Entretien</span>
           )}
           {statut === "prospected" && (
-            <span className="text-success">Prospecté</span>
+            <span style={{ color: "var(--teal)" }}>Prospecté</span>
           )}
           {statut === "relance" && (
             <span className="text-warning">Relancé</span>
           )}
+          {statut === "non-retenue" && (
+            <span className="text-danger">Non retenue</span>
+          )}
+          {statut === "retenue" && (
+            <span className="text-success">Retenue</span>
+          )}
           {checked === false && (
-            <span className="text-danger">Non prospecté</span>
+            <span className="text-muted">Non prospecté</span>
           )}
         </td>
         <td className="text-center">
