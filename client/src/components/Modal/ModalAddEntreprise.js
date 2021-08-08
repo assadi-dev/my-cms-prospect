@@ -33,6 +33,7 @@ const ModalAddEntreprise = ({
     telephone: "",
     email: "",
     siteWeb: "",
+    statut: "no-prospected",
     createAt: new Date(),
     updateAt: new Date(),
     userId: `/api/users/${authState.userId}`,
