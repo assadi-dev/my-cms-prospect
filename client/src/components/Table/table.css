@@ -1,6 +1,9 @@
 .statusRowCol {
     overflow-x: hidden;
     -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+
+
 
 }
 
