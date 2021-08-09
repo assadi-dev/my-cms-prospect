@@ -89,7 +89,7 @@ const DemarcheTable = ({
       <div className="content">
         <div className="d-flex statusRowCol">
           <DragDropContext onDragEnd={ondragEnd}>
-            <Col sm={3} md={3}>
+            <Col sm={4} lg={3}>
               <Column
                 className="boardContainer border-top border-info "
                 title="prospected"
@@ -108,7 +108,7 @@ const DemarcheTable = ({
                 </Droppable>
               </Column>
             </Col>
-            <Col sm={3} md={3}>
+            <Col sm={4} lg={3}>
               <Column
                 className="boardContainer border-top border-warning"
                 title="relance"
@@ -126,7 +126,7 @@ const DemarcheTable = ({
                 </Droppable>
               </Column>
             </Col>
-            <Col sm={3} md={3}>
+            <Col sm={4} lg={3}>
               <Column
                 className="boardContainer border-top border-success"
                 title="entretien"
@@ -145,7 +145,7 @@ const DemarcheTable = ({
                 </Droppable>
               </Column>
             </Col>
-            <Col sm={3} md={3}>
+            <Col sm={4} lg={3}>
               <Column
                 className="boardContainer border-top border-success"
                 title="retenue"
@@ -164,7 +164,7 @@ const DemarcheTable = ({
                 </Droppable>
               </Column>
             </Col>
-            <Col sm={3} md={3}>
+            <Col sm={4} lg={4}>
               <Column
                 className="boardContainer border-top border-danger"
                 title="non-retenue"

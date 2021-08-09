@@ -1,13 +1,14 @@
 .statusRowCol {
     overflow-x: hidden;
     -ms-overflow-style: none;
-    -webkit-overflow-scrolling: touch;
+
 
 
 
 }
 
-.statusRowCol::--webkit-scrollbar {
-    display: none;
-    width: 0 !important
+@media screen and (max-width:780px) {
+    .statusRowCol {
+        overflow-x: auto;
+    }
 }
