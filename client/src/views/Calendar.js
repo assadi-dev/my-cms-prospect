@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from "react";
 import {
   Card,
-  CardHeader,
   CardBody,
-  CardTitle,
   Row,
   Col,
-  Button,
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
   Nav,
   NavItem,
   NavLink,
@@ -25,10 +21,7 @@ import ModalAddEvent from "components/Modal/ModalAddEvent";
 import TabRendeVous from "./TabRendeVous";
 import { connect } from "react-redux";
 import { minDateMonthReverse, minHours } from "components/Utils/DateServices";
-import {
-  set_modal_addRdv,
-  set_modal_editRdv,
-} from "redux/actions/modalStateAction";
+import { set_modal_addRdv } from "redux/actions/modalStateAction";
 import ModalEditEvent from "components/Modal/ModalEditEvent";
 
 const Calendar = ({ listRdv, eventsData, set_modal_addRdv, modalState }) => {

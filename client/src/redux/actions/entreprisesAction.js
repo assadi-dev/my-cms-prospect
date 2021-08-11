@@ -39,6 +39,7 @@ export const get_current_entreprises = (token, id) => {
 };
 
 export const add_entreprise = (token, data) => {
+  let cleanData = { ...data, source: JSON.stringify(data.source) };
   const config = {
     Authorization: `Bearer ${token}`,
     Accept: "application/json",
@@ -46,13 +47,16 @@ export const add_entreprise = (token, data) => {
   };
 
   return async (dispatch) => {
-    await Api.post("/entreprises", data, { headers: config }).then((res) => {
-      dispatch({ type: ADD_ENTREPRISE, payload: res.data });
-    });
+    await Api.post("/entreprises", cleanData, { headers: config }).then(
+      (res) => {
+        dispatch({ type: ADD_ENTREPRISE, payload: res.data });
+      }
+    );
   };
 };
 
 export const update_entreprise = (token, id, data) => {
+  let cleanData = { ...data, source: JSON.stringify(data.source) };
   const config = {
     Authorization: `Bearer ${token}`,
     Accept: "application/json",
@@ -60,7 +64,7 @@ export const update_entreprise = (token, id, data) => {
   };
   return async (dispatch) => {
     try {
-      await Api.put(`/entreprises/${id}`, data, { headers: config }).then(
+      await Api.put(`/entreprises/${id}`, cleanData, { headers: config }).then(
         (res) => {
           dispatch({ type: EDIT_ENTREPRISE, payload: res.data });
         }

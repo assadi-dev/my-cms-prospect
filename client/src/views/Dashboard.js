@@ -16,34 +16,20 @@
 
 */
 import React, { useEffect } from "react";
-// nodejs library that concatenates classes
-import classNames from "classnames";
-// react plugin used to create charts
 
 // reactstrap components
 import {
-  Button,
-  ButtonGroup,
   Card,
   CardHeader,
   CardBody,
   CardTitle,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-  Label,
-  FormGroup,
-  Input,
   Table,
   Row,
   Col,
-  UncontrolledTooltip,
 } from "reactstrap";
 
 // core components
-import { Line, Bar } from "react-chartjs-2";
-import { chartExample1, chartExample2 } from "variables/charts.js";
+
 import ChartCard from "../components/Chart/ChartCard";
 
 import { connect } from "react-redux";
@@ -63,11 +49,6 @@ function Dashboard({
   get_entreprises,
   get_rdv,
 }) {
-  const [bigChartData, setbigChartData] = React.useState("data1");
-  const setBgChartData = (name) => {
-    setbigChartData(name);
-  };
-
   const [state, setState] = useState({
     isloading: true,
     entpriseLoad: listEntreprises.isLoading,

@@ -1,7 +1,7 @@
 import ModalEditEntreprise from "components/Modal/ModalEditEntreprise";
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { Col, Button, CustomInput, Modal, ModalBody } from "reactstrap";
+import { Col, Button, CustomInput } from "reactstrap";
 import { delete_entreprise } from "redux/actions/entreprisesAction";
 import { get_current_entreprises } from "redux/actions/entreprisesAction";
 import { update_entreprise } from "redux/actions/entreprisesAction";
@@ -16,7 +16,7 @@ const RowTableEntreprise = ({
   set_modal_editEntreprise,
   get_current_entreprises,
 }) => {
-  const { id, nom, email, telephone, ville, checked, statut } = data;
+  const { id, nom, source, email, telephone, ville, checked, statut } = data;
 
   const [state, setState] = useState({
     isChecked: false,
@@ -26,7 +26,7 @@ const RowTableEntreprise = ({
     setState((prevState) => {
       return { ...prevState, isChecked: checked };
     });
-  }, []);
+  }, [checked]);
 
   const handleChecked = async () => {
     try {
@@ -73,6 +73,15 @@ const RowTableEntreprise = ({
           </Col>
         </td>
         <td>{nom}</td>
+        <td>
+          <a
+            target="blank"
+            href={`${source && JSON.parse(source).source_link}`}
+          >
+            {" "}
+            {source && JSON.parse(source).source_name}{" "}
+          </a>
+        </td>
         <td>
           {" "}
           <a className="link-table" href={`mailto:${email}`}>

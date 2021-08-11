@@ -1,9 +1,6 @@
 .statusRowCol {
-    overflow-x: hidden;
+    overflow-x: auto;
     -ms-overflow-style: none;
-
-
-
 
 }
 

@@ -21,22 +21,17 @@ import classNames from "classnames";
 
 // reactstrap components
 import {
-  Button,
   Collapse,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
   UncontrolledDropdown,
-  Input,
-  InputGroup,
   NavbarBrand,
   Navbar,
   NavLink,
   Nav,
   Container,
-  Modal,
   NavbarToggler,
-  ModalHeader,
 } from "reactstrap";
 import { useDispatch } from "react-redux";
 import { logout } from "redux/actions/authAction";
@@ -51,7 +46,7 @@ function AdminNavbar(props) {
     return function cleanup() {
       window.removeEventListener("resize", updateColor);
     };
-  }, [dispatch]);
+  }, []);
   // function that adds color white/transparent to the navbar on resize (this is for the collapse)
   const updateColor = () => {
     if (window.innerWidth < 993 && collapseOpen) {

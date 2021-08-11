@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Card, CardBody, CardHeader, CardTitle, Row, Col } from "reactstrap";
+import { Card, CardBody, CardHeader, Col } from "reactstrap";
 import "../components/DragBoard/Demarche.css";
 import Column from "components/DragBoard/Column";
 import { connect } from "react-redux";
 import { getDataChecked } from "components/Utils/ArraySevices";
-import { useEffect } from "react";
+
 import { update_entreprise } from "redux/actions/entreprisesAction";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import "components/Table/table.css";
@@ -44,7 +44,7 @@ const DemarcheTable = ({
 
     const newState = [
       ...listData.map((item) => {
-        if (item.id == draggableId) {
+        if (item.id === draggableId) {
           return { ...item, statut: destination.droppableId };
         }
         return item;
@@ -56,8 +56,6 @@ const DemarcheTable = ({
       updateAt: new Date(),
     });
   };
-
-  const isMobile = window.innerWidth < 780;
 
   const returnColumn = (columnName) => {
     return listData

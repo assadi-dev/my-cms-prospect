@@ -1,9 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import {
-  FormGroup,
-  Label,
   Input,
-  FormText,
   Button,
   InputGroup,
   InputGroupAddon,
@@ -11,14 +8,12 @@ import {
   Alert,
 } from "reactstrap";
 import classnames from "classnames";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { login } from "redux/actions/authAction";
 import BounceLoader from "react-spinners/ClipLoader";
-import Notify from "react-notification-alert";
 
 const SignInForm = ({ error }) => {
   const dispatch = useDispatch();
-  const authstate = useSelector((state) => state.AuthReducer);
 
   const [state, setState] = useState({
     usernamefocus: false,
@@ -30,15 +25,6 @@ const SignInForm = ({ error }) => {
   });
 
   useEffect(() => {}, []);
-
-  const notify = useRef();
-
-  var options = {
-    place: "tl",
-    message: "hello",
-    type: "danger",
-    autoDismiss: 3,
-  };
 
   const handleChangevalue = (e) => {
     let name = e.target.name;

@@ -1,22 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardTitle,
-  Table,
-  Row,
-  Col,
-  Button,
-  Input,
-  InputGroup,
-  InputGroupAddon,
-  InputGroupText,
-  FormGroup,
-  ModalFooter,
-  Label,
-} from "reactstrap";
+import { Col, Button, Input, FormGroup, ModalFooter, Label } from "reactstrap";
 import { set_modal_addRdv } from "redux/actions/modalStateAction";
 import { add_rdv } from "redux/actions/rdvAction";
 

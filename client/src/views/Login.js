@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardHeader,
@@ -10,7 +10,6 @@ import {
   TabContent,
 } from "reactstrap";
 import SignInForm from "./SignInForm";
-import img from "../assets/img/card_primary.png";
 
 const Login = () => {
   const [state, setState] = useState({

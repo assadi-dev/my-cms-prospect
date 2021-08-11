@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import {
   Table,
@@ -8,8 +8,7 @@ import {
   InputGroupAddon,
   InputGroupText,
 } from "reactstrap";
-import { edit_rdv } from "redux/actions/rdvAction";
-import { minHours, minDateMonth } from "../components/Utils/DateServices";
+
 import RowTableRDV from "../components/Table/RowTableRDV";
 
 export const TabRendeVous = ({ listRdv }) => {

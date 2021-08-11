@@ -2,9 +2,9 @@ import { minHours } from "components/Utils/DateServices";
 import { minDateMonth } from "components/Utils/DateServices";
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { Table, Modal, Button, Col, CustomInput } from "reactstrap";
+import { Button, Col, CustomInput } from "reactstrap";
 import { edit_rdv, delete_rdv } from "redux/actions/rdvAction";
-import ModalEditEvent from "components/Modal/ModalEditEvent";
+
 import { get_current_rdv } from "redux/actions/rdvAction";
 import { set_modal_editRdv } from "redux/actions/modalStateAction";
 
@@ -17,7 +17,7 @@ const RowTableRDV = ({
   set_modal_editRdv,
   modalEditState,
 }) => {
-  const { id, nom, date, ville, checked, createdAt } = data;
+  const { id, nom, date, ville, checked } = data;
 
   const [state, setState] = useState({
     isChecked: false,

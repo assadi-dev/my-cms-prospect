@@ -12,7 +12,6 @@ import {
 } from "reactstrap";
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { get_current_rdv } from "redux/actions/rdvAction";
 import { set_modal_editRdv } from "redux/actions/modalStateAction";
 import {
   minDateMonthReverse,

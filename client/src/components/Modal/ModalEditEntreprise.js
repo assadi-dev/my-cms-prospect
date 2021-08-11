@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+
 import {
   Row,
   FormGroup,
@@ -10,7 +10,7 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
+  Col,
 } from "reactstrap";
 import { update_entreprise } from "redux/actions/entreprisesAction";
 import { get_current_entreprises } from "redux/actions/entreprisesAction";
@@ -28,6 +28,7 @@ const ModalEditEntreprise = ({
   const {
     id,
     nom,
+    source,
     secteur,
     adresse,
     ville,
@@ -39,8 +40,13 @@ const ModalEditEntreprise = ({
     updateAt,
   } = currentEntreprise;
 
+  const sourceData = source && JSON.parse(source);
   const initialInput = {
     nom: nom,
+    source: {
+      source_name: source && sourceData.source_name,
+      source_link: source && sourceData.source_link,
+    },
     secteur: secteur,
     adresse: adresse,
     ville: ville,
@@ -52,10 +58,9 @@ const ModalEditEntreprise = ({
     updateAt: updateAt,
     userId: `/api/users/${authState.userId}`,
   };
-  const [inputValue, setInputValue] = useState({});
+  const [inputValue, setInputValue] = useState(initialInput);
 
   const [editMode, setEdiMode] = useState(false);
-  const [showMode, setShowMode] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -77,11 +82,24 @@ const ModalEditEntreprise = ({
       return { ...prevState, [name]: value, updateAt: new Date() };
     });
   };
+  const handleSourceValue = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+
+    setInputValue({
+      ...inputValue,
+      source: { ...inputValue.source, [name]: value, updateAt: new Date() },
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     await setInputValue((prevState) => {
-      return { ...prevState, updateAt: new Date() };
+      return {
+        ...prevState,
+        updateAt: new Date(),
+      };
     });
 
     await update_entreprise(authState.token, id, inputValue);
@@ -205,6 +223,32 @@ const ModalEditEntreprise = ({
                       />
                     </FormGroup>
                   </div>
+                  <Row className="my-3">
+                    <Col lg="5">
+                      {" "}
+                      <FormGroup>
+                        <Label for="source_name">Source de l'annonce</Label>
+                        <Input
+                          name="source_name"
+                          id="source_name"
+                          defaultValue={inputValue.source.source_name}
+                          onChange={handleSourceValue}
+                        />
+                      </FormGroup>
+                    </Col>{" "}
+                    <Col lg="6">
+                      <FormGroup>
+                        <Label for="source_link">liens</Label>
+                        <Input
+                          name="source_link"
+                          id="source_link"
+                          defaultValue={inputValue.source.source_link}
+                          onChange={handleSourceValue}
+                          type="url"
+                        />
+                      </FormGroup>
+                    </Col>
+                  </Row>
                   <Row>
                     <FormGroup className="col-md">
                       <Label for="description">Commentaire</Label>

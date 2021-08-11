@@ -2,11 +2,8 @@ import { minTextDate } from "components/Utils/DateServices";
 import React from "react";
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Row, Button, Col, ModalBody, ModalFooter } from "reactstrap";
-import {
-  update_entreprise,
-  get_current_entreprises,
-} from "redux/actions/entreprisesAction";
+import { Row, Col, ModalFooter } from "reactstrap";
+import { update_entreprise } from "redux/actions/entreprisesAction";
 
 const ShowEntreprise = ({
   update_entreprise,
@@ -14,8 +11,8 @@ const ShowEntreprise = ({
   authState,
 }) => {
   const {
-    id,
     nom,
+    source,
     secteur,
     adresse,
     ville,
@@ -49,7 +46,7 @@ const ShowEntreprise = ({
             <Row>
               {email && (
                 <Col>
-                  <a href={`mailto:${email}`} target="_blank">
+                  <a href={`mailto:${email}`} target="blank">
                     <i className="tim-icons icon-email-85 mr-2" />
                     contacter par email
                   </a>
@@ -71,8 +68,21 @@ const ShowEntreprise = ({
                   </a>
                 </Col>
               )}
+              {source && (
+                <Col>
+                  <span className="mr-2">Source: </span>{" "}
+                  <a
+                    className="mr-2"
+                    target="blank"
+                    href={`${source && JSON.parse(source).source_link}`}
+                  >
+                    {source && JSON.parse(source).source_name}
+                  </a>
+                </Col>
+              )}
             </Row>
           </div>
+
           <div className="mt-3">{description}</div>
         </div>
         <ModalFooter className="mt-3">

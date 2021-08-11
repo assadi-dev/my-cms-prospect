@@ -24,6 +24,7 @@ const ModalAddEntreprise = ({
 }) => {
   const initialInput = {
     nom: "",
+    source: { source_name: "", source_link: "" },
     secteur: "",
     adresse: "",
     ville: "",
@@ -47,7 +48,7 @@ const ModalAddEntreprise = ({
         userId: `/api/users/${authState.userId}`,
       };
     });
-  }, []);
+  }, [authState.userId]);
 
   const handleChangValue = (e) => {
     let name = e.target.name;
@@ -58,6 +59,16 @@ const ModalAddEntreprise = ({
         ...prevState,
         [name]: value,
       };
+    });
+  };
+
+  const handleSourceValue = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+
+    setState({
+      ...state,
+      source: { ...state.source, [name]: value },
     });
   };
 
@@ -87,6 +98,7 @@ const ModalAddEntreprise = ({
         isOpen={modalState}
         modalClassName="modal-black"
         toggle={showAddEntrepriseModal}
+        size="lg"
       >
         <ModalHeader className="justify-content-center">
           <button
@@ -110,6 +122,32 @@ const ModalAddEntreprise = ({
                   placeholder="Nom de l'entreprise"
                   onChange={handleChangValue}
                 />
+                <Row className="my-3">
+                  <Col lg="5">
+                    {" "}
+                    <FormGroup>
+                      <Label for="source_name">Source de l'annonce</Label>
+                      <Input
+                        name="source_name"
+                        id="source_name"
+                        placeholder="Linkedin ,Pole-emploie..."
+                        onChange={handleSourceValue}
+                      />
+                    </FormGroup>
+                  </Col>{" "}
+                  <Col lg="6">
+                    <FormGroup>
+                      <Label for="source_link">liens</Label>
+                      <Input
+                        name="source_link"
+                        id="source_link"
+                        placeholder="liens de l'annonce"
+                        onChange={handleSourceValue}
+                        type="url"
+                      />
+                    </FormGroup>
+                  </Col>
+                </Row>
               </FormGroup>
               <FormGroup>
                 <Label for="secteur">Secteur Activité</Label>

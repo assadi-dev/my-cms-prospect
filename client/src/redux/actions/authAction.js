@@ -1,7 +1,7 @@
 import Api from "components/Api";
 import { removeCookiesAuth } from "components/Utils/AuthServices";
 import { setCookiesAuth } from "components/Utils/AuthServices";
-import { ERROR_MESSAGE, set_error_message } from "./errorMessageAction";
+import { ERROR_MESSAGE } from "./errorMessageAction";
 
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
