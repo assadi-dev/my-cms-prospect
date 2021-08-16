@@ -10,7 +10,7 @@ export async function cacheAuthAsync(authState) {
 export const setCookiesAuth = async (authState) => {
   return await Cookies.set(StorageKey, authState, {
     expires: 7,
-    secure: true,
+    secure: false,
     sameSite: "none",
   });
 };
